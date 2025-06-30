@@ -1,0 +1,119 @@
+[
+  {
+    "name": "PMT_APPROVAL_REQUESTS"
+  },
+  {
+    "name": "PMT_ASSIGNED_COMMITTEES"
+  },
+  {
+    "name": "PMT_AUDIT"
+  },
+  {
+    "name": "PMT_BUNDLE_APPROVALS"
+  },
+  {
+    "name": "PMT_BUNDLE_FILES"
+  },
+  {
+    "name": "PMT_BUNDLE_PRODUCTS"
+  },
+  {
+    "name": "PMT_BUNDLES"
+  },
+  {
+    "name": "PMT_BUNDLES_ASSOCIATION"
+  },
+  {
+    "name": "PMT_CLIENT_SEGMENT_COMMITTEE_MAP"
+  },
+  {
+    "name": "PMT_CLIENT_SEGMENTS"
+  },
+  {
+    "name": "PMT_CLIENT_UNITS"
+  },
+  {
+    "name": "PMT_COMMITTEE_USER_MAP"
+  },
+  {
+    "name": "PMT_COMMITTEES"
+  },
+  {
+    "name": "PMT_CONDITIONS"
+  },
+  {
+    "name": "PMT_CONFIG_FIELDS"
+  },
+  {
+    "name": "PMT_CONFIG_FORM_FIELD_MAP"
+  },
+  {
+    "name": "PMT_CONFIG_FORMS"
+  },
+  {
+    "name": "PMT_FEATURES"
+  },
+  {
+    "name": "PMT_FILES"
+  },
+  {
+    "name": "PMT_FILES_ATTRIBUTES_MAP"
+  },
+  {
+    "name": "PMT_MEETING_FILES"
+  },
+  {
+    "name": "PMT_MEETINGS"
+  },
+  {
+    "name": "PMT_MEETINGS_RFA"
+  },
+  {
+    "name": "PMT_PRODUCT_APPROVALS"
+  },
+  {
+    "name": "PMT_PRODUCT_FILES"
+  },
+  {
+    "name": "PMT_PRODUCT_IDENTIFIERS"
+  },
+  {
+    "name": "PMT_PRODUCTS"
+  },
+  {
+    "name": "PMT_PRODUCTS_ASSOCIATION"
+  },
+  {
+    "name": "PMT_PROPOSITION_APPROVALS"
+  },
+  {
+    "name": "PMT_PROPOSITION_BUNDLES"
+  },
+  {
+    "name": "PMT_PROPOSITION_FILES"
+  },
+  {
+    "name": "PMT_PROPOSITION_PRODUCTS"
+  },
+  {
+    "name": "PMT_PROPOSITIONS"
+  },
+  {
+    "name": "PMT_PROPOSITIONS_ASSOCIATION"
+  },
+  {
+    "name": "PMT_RFA_FILES"
+  },
+  {
+    "name": "PMT_STATIC_DATA"
+  },
+  {
+    "name": "PMT_TOPIC_ATTRIBUTES"
+  },
+  {
+    "name": "PMT_TOPICS"
+  },
+  {
+    "name": "PMT_USER_PROFILES"
+  }
+]

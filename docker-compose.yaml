@@ -1,0 +1,123 @@
+# Inventory for BPM Enterprise and additional App Database - for database, Azure SQL DB is preferred, overide with PostgreSQL available
+
+# Starts all BPME related services and injects the appropriate environment for DB and LDAP.
+
+ 
+
+services:
+
+ 
+
+  app:
+    env_file:
+      - db_mssql.env
+      - ldap.env
+    image: abnamro2024/aamrun:bpme_runtime_560 # latest based on tibco/bpm/runtime:5.x.x-hfx
+    user: root
+    ports:
+
+      - "8080:8181" # 8181 excluded on VDIs https://github.com/docker/for-win/issues/3171
+
+    logging:
+
+      driver: json-file
+
+      options:
+
+        max-size: 60m
+
+
+    depends_on:
+
+      - dbsrv
+
+      - ldapsrv
+
+    hostname: bpme-runtime
+
+    restart: unless-stopped
+
+ 
+
+  dbsrv:
+    env_file:
+      - db_mssql.env
+    image: mcr.microsoft.com/azure-sql-edge:latest  # or ${DOCKER_PRIV_REGISTRY}/azure-sql-edge # = proxied mcr.microsoft.com/azure-sql-edge
+
+    ports:
+
+      - "1433:1433"
+    
+    hostname: bpme-azuresqldb
+
+    restart: unless-stopped
+
+    volumes:
+
+      - "azuresql-edge-data:/var/opt/mssql"
+
+      - "azuresql-edge-data:/var/opt/mssql-extensibility"
+
+      - "azuresql-edge-data:/var/opt/mssql-extensibility/data"
+
+      - "azuresql-edge-data:/var/opt/mssql-extensibility/log"
+
+  pmtdb:
+    image: mcr.microsoft.com/azure-sql-edge:latest  # or ${DOCKER_PRIV_REGISTRY}/azure-sql-edge # = proxied mcr.microsoft.com/azure-sql-edge
+    user: root
+    hostname: pmt-db
+    restart: unless-stopped
+    ports:
+      - "1434:1433"
+    volumes:
+      - "pmtdb-edge-data:/var/opt/mssql"
+    env_file:
+      - pmt_db.env
+
+  ldapsrv:
+
+    image: abnamro2024/aamrun:apacheds_2.0.0.AM26
+
+    ports:
+
+      - "10389:10389"
+
+    hostname: bpme-apacheds
+
+    restart: unless-stopped
+
+    volumes:
+
+      - "apacheds-data:/var/lib/apacheds"
+
+ 
+
+  # utility: # Utility is optional and needed only for interactive additional setup
+
+  #   image: ${DOCKER_PRIV_REGISTRY}/tacp/bpm/utility:5.6.0  # latest based on tibco/bpm/utility:5.x.x-hfx
+
+  #   depends_on:
+
+  #     - dbsrv
+
+  #   entrypoint: "sleep 60 && utility"
+
+  #   command: tail -f /dev/null # to keep running
+
+  #   # command: ["utility","-dbConfig","url=jdbc:db2://bpm-db2:50000/bpm:driverType=4;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;progressiveLocators=2;useJDBC4ColumnNameAndLabelSemantics=2;"]
+
+  #   hostname: bpme-utility
+
+  #   restart: "no"
+
+ 
+
+volumes:
+
+  apacheds-data:
+
+  azuresql-edge-data:
+  #bpme-express-data:
+
+  pmtdb-edge-data:
+  #pmtdb-express-data:
